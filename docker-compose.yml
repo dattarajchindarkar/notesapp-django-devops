@@ -2,7 +2,6 @@ services:
   db:
     image: mysql:8.0
     container_name: mysql-db
-    restart: unless-stopped
 
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -13,6 +12,20 @@ services:
     ports:
       - "3306:3306"
 
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+    restart: unless-stopped
+
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+    networks:
+      - django-network
+
   django:
     build:
       context: .
@@ -21,12 +34,38 @@ services:
     ports:
       - "8000:8000"
 
-    depends_on:
-      - db
-
     env_file:
       - .env
 
+    depends_on:
+      db:
+        condition: service_healthy
+
     restart: unless-stopped
 
+    networks:
+      - django-network
+
+  nginx:
+    build:
+      context: ./nginx
+    container_name: nginx
+
+    ports:
+      - "80:80"
+
+    depends_on:
+      - django
+
+    restart: unless-stopped
+
+    networks:
+      - django-network
+
+volumes:
+  mysql-data:
+
+networks:
+  django-network:
+  
 
