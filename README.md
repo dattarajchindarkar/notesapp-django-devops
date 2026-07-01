@@ -11,28 +11,6 @@ MySQL Database
 
 The project focuses on learning real-world DevOps concepts such as Docker networking, persistent storage, reverse proxying, health checks, and container orchestration using Docker Compose.
 
-🏗 Architecture
-                Client Browser
-                       │
-                    HTTP :80
-                       │
-                ┌─────────────┐
-                │    Nginx    │
-                └──────┬──────┘
-                       │
-              Proxy Pass :8000
-                       │
-                ┌─────────────┐
-                │  Gunicorn   │
-                └──────┬──────┘
-                       │
-                ┌─────────────┐
-                │   Django    │
-                └──────┬──────┘
-                       │
-                ┌─────────────┐
-                │    MySQL    │
-                └─────────────┘
 🚀 Features
 Dockerized Django application
 Multi-container deployment using Docker Compose
