@@ -1,85 +1,135 @@
-📖 Project Overview
+# Django Notes App
 
-This project demonstrates how to deploy a Django application using a multi-container Docker architecture. Instead of running everything on a single machine, each component runs inside its own isolated container.
+A production-style Django Notes application deployed using Docker, Docker Compose, Gunicorn, Nginx, and MySQL.
 
-The application consists of:
+## 🚀 Features
 
-Django Backend
-Gunicorn WSGI Server
-Nginx Reverse Proxy
-MySQL Database
+- Multi-container architecture with Docker Compose
+- Django backend with Gunicorn
+- Nginx as a Reverse Proxy
+- MySQL 8 database
+- Docker Volumes for persistent database storage
+- Custom Docker Network
+- Environment variables using `.env`
+- MySQL Health Checks
+- Automatic database migrations on startup
 
-The project focuses on learning real-world DevOps concepts such as Docker networking, persistent storage, reverse proxying, health checks, and container orchestration using Docker Compose.
+## 🛠️ Tech Stack
 
-🚀 Features
-Dockerized Django application
-Multi-container deployment using Docker Compose
-Gunicorn as WSGI application server
-Nginx Reverse Proxy
-MySQL Database
-Docker Named Volumes
-Docker Bridge Network
-Health Check for MySQL
-Automatic Django Migrations
-Environment Variables using .env
+- Python
+- Django
+- Gunicorn
+- Nginx
+- MySQL
+- Docker
+- Docker Compose
+- Linux (Ubuntu)
 
-🛠 Tech Stack
-Technology	Purpose
-Python	Backend Language
-Django	Web Framework
-Gunicorn	WSGI Server
-Nginx	Reverse Proxy
-MySQL	Database
-Docker	Containerization
-Docker Compose	Multi-container Orchestration
-Linux (Ubuntu)	Deployment Environment
+## 📁 Project Structure
 
-📁 Project Structure
+```
 django-notes-app/
-│
-├── api/
-├── notesapp/
-├── nginx/
+│── api/
+│── notesapp/
+│── nginx/
 │   ├── Dockerfile
 │   └── default.conf
-│
-├── Dockerfile
-├── docker-compose.yml
-├── requirements.txt
-├── entrypoint.sh
-├── .env
-├── manage.py
-└── README.md
+│── Dockerfile
+│── docker-compose.yml
+│── entrypoint.sh
+│── requirements.txt
+│── .env
+│── manage.py
+```
 
+## ⚙️ Getting Started
 
-Example .env
+Clone the repository
 
-DB_NAME=notes_db
-DB_USER=django
-DB_PASSWORD=django123
-DB_HOST=db
-DB_PORT=3306
-🚀 Running the Project
-Clone Repository
-git clone https://github.com/dattarajchindarkar/django-notes-app.git
+```bash
+git clone https://github.com/dattarajchindarkar/django-devops-demo.git
+cd django-devops-demo
+```
 
+Build the images
 
-🚀 Future Improvements
-HTTPS using Let's Encrypt
-GitHub Actions CI/CD
-AWS EC2 Deployment
-Docker Image Optimization
-Kubernetes Deployment
-Load Balancing
-Redis Caching
-Monitoring with Prometheus & Grafana
-📸 Screenshots
+```bash
+docker compose build
+```
 
+Start the application
 
-👨‍💻 Author
+```bash
+docker compose up -d
+```
 
-Dattaraj Chindarkar
+Stop the application
 
-GitHub: https://github.com/dattarajchindarkar
+```bash
+docker compose down
+```
 
-LinkedIn: (Add your LinkedIn profile URL)
+## 🔧 Useful Commands
+
+View running containers
+
+```bash
+docker ps
+```
+
+View logs
+
+```bash
+docker logs django-app
+docker logs nginx
+docker logs mysql-db
+```
+
+Open Django container
+
+```bash
+docker exec -it django-app sh
+```
+
+Open MySQL
+
+```bash
+docker exec -it mysql-db mysql -udjango -pdjango123
+```
+
+Validate Docker Compose configuration
+
+```bash
+docker compose config
+```
+
+## 📚 Concepts Covered
+
+- Docker Images & Containers
+- Docker Compose
+- Docker Networks
+- Docker Volumes
+- Health Checks
+- Reverse Proxy
+- Gunicorn
+- Django Migrations
+- Environment Variables
+- Service Discovery
+
+## 📌 Future Improvements
+
+- GitHub Actions CI/CD
+- HTTPS with Let's Encrypt
+- AWS Deployment
+- Kubernetes
+- Monitoring & Logging
+
+## 👨‍💻 Author
+
+**Dattaraj Chindarkar**
+
+- GitHub: https://github.com/dattarajchindarkar
+- LinkedIn: www.linkedin.com/in/dattaraj-chindarkar-163680282
+
+---
+⭐ If you found this project useful, consider giving it a star!
