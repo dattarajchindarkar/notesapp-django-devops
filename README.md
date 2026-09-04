@@ -47,7 +47,7 @@ django-notes-app/
 Clone the repository
 
 ```bash
-git clone https://github.com/dattarajchindarkar/django-devops-demo.git
+git clone https://github.com/dattarajchindarkar/notesapp-django-devops.git
 cd django-devops-demo
 ```
 
@@ -91,11 +91,6 @@ Open Django container
 docker exec -it django-app sh
 ```
 
-Open MySQL
-
-```bash
-docker exec -it mysql-db mysql -udjango -pdjango123
-```
 
 Validate Docker Compose configuration
 
